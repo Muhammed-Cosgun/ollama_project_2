@@ -1,0 +1,11 @@
+E-FATURA TEKNİK DOĞRULAMA — ÖRNEK EĞİTİM VERİSİ
+
+Fatura numarası yalnız büyük harf ve rakamlardan oluşmalıdır.
+
+Alıcı kimlik bilgisinin türü TCKN ise bu değer 11 haneden oluşmalıdır.
+
+Fatura düzenleme tarihi, düzenleme saatinden önce yer almalıdır.
+
+Bir XML belgesinde zorunlu alan eksikse sistem bu değeri tahmin ederek doldurmaz.
+
+Bu kurallar yalnız teknik doğrulama örneğidir; mali veya hukuki karar yerine geçmez.
