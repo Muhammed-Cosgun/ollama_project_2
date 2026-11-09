@@ -1,11 +1,111 @@
-E-FATURA TEKNİK DOĞRULAMA — ÖRNEK EĞİTİM VERİSİ
+# E-FATURA TEKNİK DOĞRULAMA — GENİŞLETİLMİŞ ÖRNEK EĞİTİM VERİSİ
 
-Fatura numarası yalnız büyük harf ve rakamlardan oluşmalıdır.
+## 1. Genel Bilgilendirme
 
-Alıcı kimlik bilgisinin türü TCKN ise bu değer 11 haneden oluşmalıdır.
+Bu doküman, elektronik fatura belgelerinin teknik doğrulama süreçlerini örneklemek amacıyla hazırlanmıştır. İçerisindeki kurallar, yapay zekâ destekli belge arama, hata tespiti, bilgi getirme ve cevap üretme sistemlerinin eğitim ve test çalışmalarında kullanılmak üzere tasarlanmıştır.
 
-Fatura düzenleme tarihi, düzenleme saatinden önce yer almalıdır.
+Bu metindeki kurallar gerçek elektronik fatura mevzuatının eksiksiz veya doğrulanmış karşılığı değildir. Teknik doğrulama örnekleri olarak değerlendirilmelidir.
 
-Bir XML belgesinde zorunlu alan eksikse sistem bu değeri tahmin ederek doldurmaz.
+## 2. Fatura Numarası Kuralları
 
-Bu kurallar yalnız teknik doğrulama örneğidir; mali veya hukuki karar yerine geçmez.
+Kural 1: Bu örnek sistemde fatura numarası yalnızca büyük harf ve rakamlardan oluşmalıdır. Küçük harfler, boşluklar ve özel karakterler kabul edilmez.
+
+Kural 2: Fatura numarası alanı boş bırakılamaz. Fatura numarası bulunmayan belgeler eksik bilgi hatasıyla işaretlenir.
+
+Kural 3: Fatura numarasında küçük harf kullanılması durumunda sistem bir biçim hatası tespit eder. Büyük harfe dönüştürme işlemi yalnızca örnek test ortamında ve kullanıcı onayıyla uygulanabilir.
+
+Kural 4: Aynı fatura numarasının birden fazla test belgesinde kullanılması durumunda sistem olası tekrar kaydı uyarısı oluşturabilir. Bu kontrolün yapılabilmesi için önceki test kayıtlarına erişim gerekir.
+
+## 3. Alıcı Kimlik Bilgileri
+
+Kural 5: Alıcı kimlik bilgisinin türü TCKN olarak belirtilmişse bu değer 11 haneden oluşmalıdır.
+
+Kural 6: TCKN alanına harf veya özel karakter girilmesi durumunda teknik biçim hatası oluşturulur. Bu örnek kural yalnızca karakter türünü ve uzunluğu kontrol eder.
+
+Kural 7: Alıcı kimlik bilgisi eksik olduğunda sistem bu değeri kendiliğinden üretmez. Eksik bilgi kullanıcıdan talep edilir.
+
+Kural 8: Alıcı adı ve alıcı kimlik bilgisi farklı alanlarda tutulmalıdır. Bu alanların karıştırılması belge yapısında tutarsızlık oluşturabilir.
+
+## 4. Fatura Tarihi ve Saati
+
+Kural 9: Bu örnek dokümanın veri sıralama kuralına göre fatura düzenleme tarihi, düzenleme saatinden önce yer almalıdır.
+
+Kural 10: Fatura düzenleme tarihi alanı boş olduğunda sistem eksik tarih bilgisi hatası oluşturur. Tarih kullanıcıdan doğrulanmadan otomatik olarak doldurulmaz.
+
+Kural 11: Düzenleme tarihi örnek test ortamında YYYY-MM-DD biçiminde beklenir. Farklı biçimler test doğrulayıcısı tarafından biçim hatası olarak işaretlenebilir.
+
+Kural 12: Düzenleme saati örnek test ortamında HH:MM:SS biçiminde beklenir. Saat alanında geçersiz karakterler bulunursa biçim hatası oluşturulur.
+
+## 5. XML Belge Yapısı
+
+Kural 13: Bir XML belgesinde zorunlu alan eksikse sistem bu değeri tahmin ederek doldurmaz. Eksik alan raporlanır ve kullanıcıdan bilgi istenir.
+
+Kural 14: XML belgesindeki açılış ve kapanış etiketleri birbiriyle uyumlu olmalıdır. Kapanış etiketi eksik olan belgeler XML ayrıştırma hatası oluşturabilir.
+
+Kural 15: XML etiketlerinin iç içe geçme sırası doğru olmalıdır. Yanlış iç içe yerleştirilmiş etiketler belgenin ayrıştırılmasını engelleyebilir.
+
+Kural 16: XML belgesinde kullanılan özel karakterler XML sözdizimine uygun biçimde temsil edilmelidir. Örneğin metin içindeki ve işareti gerektiğinde uygun karakter referansıyla yazılmalıdır.
+
+Kural 17: XML belgesinin yapısal olarak düzgün olması, bütün iş kurallarını karşıladığı anlamına gelmez. Yapısal doğrulama ve iş kuralı doğrulaması farklı aşamalardır.
+
+## 6. Şema Doğrulama
+
+Kural 18: XSD doğrulaması, XML belgesinin tanımlı şema yapısına uygunluğunu kontrol eder. Alanların sırası, veri türleri ve zorunluluk koşulları kullanılan şema tanımına göre değerlendirilir.
+
+Kural 19: XML belgesindeki bir alanın veri türü şemadaki tanımla uyuşmuyorsa şema doğrulama hatası oluşabilir.
+
+Kural 20: Schematron doğrulaması, tanımlanmış iş kurallarının ve alanlar arası koşulların kontrol edilmesi için kullanılabilir. Kontrol edilen koşullar, kullanılan Schematron kural dosyasına bağlıdır.
+
+## 7. Hata Önceliklendirme ve Düzeltme
+
+Kural 21: XML belgesinin ayrıştırılamamasına neden olan sözdizimi hataları bu örnek sistemde kritik hata olarak sınıflandırılır.
+
+Kural 22: Zorunlu alanların eksik olması yüksek öncelikli hata olarak değerlendirilir. Eksik alanın değeri sistem tarafından uydurulmaz.
+
+Kural 23: Güvenli olduğu önceden tanımlanmış biçimsel düzeltmeler kullanıcı onayıyla uygulanabilir. Vergi tutarı, toplam tutar ve kimlik numarası gibi anlam taşıyan değerler tahmin edilerek değiştirilmez.
+
+Kural 24: Bir düzeltme uygulandıktan sonra XML belgesi yeniden doğrulanmalıdır. İlk doğrulama ile son doğrulama sonuçları karşılaştırılarak hangi hataların giderildiği raporlanır.
+
+Kural 25: Orijinal XML belgesi değiştirilmeden korunmalıdır. Düzeltilmiş belge ayrı bir çıktı olarak saklanmalı ve yapılan değişiklikler raporlanmalıdır.
+
+## 8. Örnek Sorular ve Beklenen Bilgiler
+
+Soru: Fatura numarası hangi karakterlerden oluşmalıdır?
+
+Beklenen bilgi: Bu örnek sistemde fatura numarası yalnızca büyük harf ve rakamlardan oluşmalıdır.
+
+Soru: TCKN kaç haneli olmalıdır?
+
+Beklenen bilgi: TCKN türündeki alıcı kimlik bilgisi 11 haneden oluşmalıdır.
+
+Soru: XML belgesinde zorunlu alan eksikse ne yapılır?
+
+Beklenen bilgi: Sistem eksik alanı tahmin ederek doldurmaz. Eksik alanı raporlar ve kullanıcıdan bilgi ister.
+
+Soru: XSD doğrulaması neyi kontrol eder?
+
+Beklenen bilgi: XML belgesinin tanımlı şema yapısına uygunluğunu kontrol eder.
+
+Soru: Schematron ne işe yarar?
+
+Beklenen bilgi: Tanımlanmış iş kurallarını ve alanlar arası koşulları doğrulamak için kullanılır.
+
+Soru: XML belgesinde düzeltme yapıldıktan sonra ne yapılmalıdır?
+
+Beklenen bilgi: Belge yeniden doğrulanmalı ve önceki doğrulama sonuçlarıyla karşılaştırılmalıdır.
+
+Soru: Sistem vergi tutarını otomatik değiştirebilir mi?
+
+Beklenen bilgi: Hayır. Bu örnek sistemde vergi tutarı gibi anlam taşıyan değerler tahmin edilerek değiştirilmez.
+
+Soru: Orijinal fatura dosyası korunmalı mıdır?
+
+Beklenen bilgi: Evet. Orijinal XML dosyası değiştirilmeden korunur ve düzeltilmiş belge ayrı kaydedilir.
+
+## 9. Güvenlik ve Kullanım Sınırları
+
+Bu doküman eğitim, yazılım geliştirme ve yapay zekâ tabanlı bilgi erişim deneyleri amacıyla hazırlanmıştır.
+
+Buradaki örnek kurallar gerçek elektronik fatura düzenlemelerinde tek başına esas alınmamalıdır. Gerçek doğrulama işlemlerinde ilgili resmi teknik dokümanlar, geçerli şema dosyaları ve yayımlanmış iş kuralları kullanılmalıdır.
+
+Sistem, kullanıcı tarafından sağlanmamış kimlik bilgilerini, vergi değerlerini veya fatura tutarlarını uyduramaz. Kritik değişiklikler kullanıcı onayı gerektirir ve orijinal belge korunur.

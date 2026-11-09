@@ -1,0 +1,29 @@
+PERSONEL BİLGİ VE KAYIT FORMU
+
+Doldurulduğu Tarih: 08.11.2026
+
+1. Kimlik Bilgileri (Kişisel Veri)
+
+• Adı Soyadı: Ahmet Yılmaz
+• T.C. Kimlik Numarası: 12345678901
+• Doğum Tarihi ve Yeri: 15.05.1990 – İstanbul
+• Medeni Hali: Evli
+
+2. İletişim Bilgileri (Kişisel Veri)
+
+• Telefon Numarası: +90 (555) 123 45 67
+• E-posta Adresi: ahmet.yilmaz@kurgusalmail.com
+• İkametgah Adresi: Kadıköy Mahallesi, Atatürk Caddesi, No: 12, Daire: 4, Kadıköy / İstanbul
+
+3. Eğitim ve Çalışma Bilgileri (Kişisel Veri)
+
+• Öğrenim Durumu: Lisans (Bilgisayar Mühendisliği)
+• Eski Çalıştığı Yer: XYZ Teknoloji A.Ş.
+• IBAN / Banka Hesap Bilgisi: TR68 0006 2000 0001 2345 6789 01
+
+4. Sağlık ve Güvenlik Bilgileri (Özel Nitelikli Kişisel Veri)
+
+• Kan Grubu: A Rh (+)
+• Kronik Rahatsızlık / Alerji Durumu: Polen alerjisi (Hafif düzeyde)
+• Ceza Mahkumiyeti / Sicil Kaydı Durumu: Yoktur (Adli sicil kaydı ekte sunulmuştur)
+• Sendika Üyeliği Bilgisi: Teknoloji İşçileri Sendikası
